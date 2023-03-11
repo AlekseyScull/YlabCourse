@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Guess {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int number = new Random().nextInt(99) + 1;
         int maxAttempts = 10;
         System.out.println("Я загадал число. У тебя " + maxAttempts + " попыток угадать.");
