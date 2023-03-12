@@ -31,6 +31,6 @@ public class StatsAccumulatorImpl implements StatsAccumulator{
 
     @Override
     public Double getAvg() {
-        return sum / (count * 1.0);
+        return count == 0 ? 0 : sum / (count * 1.0);
     }
 }
