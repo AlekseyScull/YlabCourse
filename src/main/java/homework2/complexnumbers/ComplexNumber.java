@@ -50,13 +50,21 @@ public class ComplexNumber {
     @Override
     public String toString() {
         String result = "0";
-        if (real != 0 && imaginary == 0) result = real + "";
+        if (real != 0 && imaginary == 0) {
+            result = real + "";
+        }
         else if (imaginary != 0) {
             StringBuilder sb = new StringBuilder();
             sb.append(real);
-            if (imaginary > 0) sb.append(" + ");
-            else sb.append(" - ");
-            if (Math.abs(imaginary) != 1) sb.append(Math.abs(imaginary));
+            if (imaginary < 0) {
+                sb.append(" - ");
+            }
+            else {
+                sb.append(" + ");
+            }
+            if (Math.abs(imaginary) != 1) {
+                sb.append(Math.abs(imaginary));
+            }
             sb.append("i");
             result = sb.toString();
         }

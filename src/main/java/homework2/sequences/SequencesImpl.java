@@ -67,8 +67,12 @@ public class SequencesImpl implements Sequences {
     public void h(int n) {
         int counter = 1;
         for (int i = 1; i <= n; i++) {
-            if (i % 2 != 0) System.out.print(counter++ + " ");
-            else System.out.print(0 + " ");
+            if (i % 2 != 0) {
+                System.out.print(counter++ + " ");
+            }
+            else {
+                System.out.print(0 + " ");
+            }
         }
         System.out.println();
     }
@@ -88,7 +92,9 @@ public class SequencesImpl implements Sequences {
         long[] fib = new long[n + 1];
         fib[1] = 1;
         for (int i = 1; i <= n; i++) {
-            if (i < 2) System.out.print(fib[i] + " ");
+            if (i < 2) {
+                System.out.print(fib[i] + " ");
+            }
             else {
                 fib[i] = fib[i - 1] + fib[i - 2];
                 System.out.print(fib[i] + " ");
