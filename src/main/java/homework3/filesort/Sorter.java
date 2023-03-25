@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Sorter {
-    private long numberOfLines = 1000;
+    private long numberOfLines = 10;
 
     public File sortFile(File dataFile) {
         List<File> tempFiles = new ArrayList<>();
@@ -81,7 +81,7 @@ public class Sorter {
                 if (!read1 && hasNext1) {
                     read1 = true;
                     String line;
-                    for (int i2 = 0; i2 < numberOfLines / 3; i2++) {
+                    for (int i2 = 0; i2 < (numberOfLines / 3) + 1; i2++) {
                         if ((line = br1.readLine()) != null) {
                             list1.add(Long.parseLong(line));
                         } else {
@@ -93,7 +93,7 @@ public class Sorter {
                 if (!read2 && hasNext2) {
                     read2 = true;
                     String line;
-                    for (int i1 = 0; i1 < numberOfLines / 3; i1++) {
+                    for (int i1 = 0; i1 < (numberOfLines / 3) + 1; i1++) {
                         if ((line = br2.readLine()) != null) {
                             list2.add(Long.parseLong(line));
                         } else {
@@ -112,32 +112,31 @@ public class Sorter {
                         out.add(list2.get(j++));
 
                     }
-                    if (out.size() == Math.max(m, n)) {
+                    if (out.size() == Math.max(m,n)){
                         appendListToFile(out, merged);
                         out = new ArrayList<>();
                     }
                 }
                 if (m == 0) {
-                    for (; j < list2.size(); j++) {
-                        out.add(list2.get(j));
+                    for (; j < n;) {
+                        out.add(list2.get(j++));
                     }
-                    j = n;
-                } else if (n == 0) {
-                    for (; i < list1.size(); i++) {
-                        out.add(list1.get(i));
+                }
+                if (n == 0) {
+                    for (; i < m;) {
+                        out.add(list1.get(i++));
                     }
-                    i = m;
                 }
-                if (out.size() >= Math.max(m,n)) {
-                    appendListToFile(out, merged);
-                    out = new ArrayList<>();
-                }
-                if (i == m) {
+
+                appendListToFile(out, merged);
+                out = new ArrayList<>();
+
+                if (i >= m) {
                     list1 = new ArrayList<>();
                     read1 = false;
                     i = 0;
                 }
-                if (j == n) {
+                if (j >= n) {
                     list2 = new ArrayList<>();
                     read2 = false;
                     j = 0;
